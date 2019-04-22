@@ -1,0 +1,31 @@
+@import url("navbar.css");
+
+
+body{
+	height: 100%;
+}
+
+label {
+    font-size: 1rem !important;
+    color: rgba(0,0,0,0.87) !important;
+}
+
+.background{
+	background: rgba(158, 158, 158, 0.5);
+	background: -moz-linear-gradient(75deg, rgba(250, 250, 250,1) 0%, rgba(158, 158, 158, 0.5) 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(250, 250, 250,1)), color-stop(100%, rgba(158, 158, 158, 0.5)));
+	background: -webkit-linear-gradient(75deg, rgba(250, 250, 250,1) 0%, rgba(158, 158, 158, 0.5) 100%);
+	background: -o-linear-gradient(75deg, rgba(250, 250, 250,1) 0%, rgba(158, 158, 158, 0.5) 100%);
+	background: -ms-linear-gradient(75deg, rgba(250, 250, 250,1) 0%, rgba(158, 158, 158, 0.5) 100%);
+	/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009244', endColorstr='#003e7b', GradientType=1 );*/
+	background: linear-gradient(75deg, rgba(250, 250, 250,1) 0%, rgba(158, 158, 158, 0.5) 100%);
+    background-image: linear-gradient(76deg, rgb(250, 250, 250) 0%, rgba(158, 158, 158, 0.5) 100%);
+    min-height: 100vh;
+    overflow: auto;
+}
+
+#map {
+    height: 100%;
+}
+
+

@@ -1,0 +1,97 @@
+<html>
+
+<head>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+	<meta name="google-signin-client_id" content="XXXXXXXXXXXXXXX.apps.googleusercontent.com">
+	<title>:: APP BASICÃO ::</title>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<script src="js/facebook.js"></script>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js"></script>
+	<script src="js/googlelogin.js"></script>
+	<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" async defer></script> <!--&callback=initMap-->
+
+	<script src="js/main.js"></script>
+	<script src="js/form.js"></script>
+	<script src="js/map.js"></script>	
+
+	<style>
+		@import url("css/main.css");
+	</style>
+</head>
+
+<body>
+	<div class="background">
+		<section id="header">
+			<nav>
+				<div class="nav-wrapper">
+					<a href="#" data-target="mobile-demo" class="sidenav-trigger">
+						<div class="NavbarToggle">
+							<div class="ToggleOne"></div>
+							<div class="ToggleTwo"></div>
+							<div class="ToggleThree"></div>
+						</div>
+					</a>
+				</div>
+			</nav>
+			<ul class="sidenav" id="mobile-demo">
+				<li><a href="javascript:void(0)" onclick="showLoginPage()"><i class="material-icons" >home</i> &nbsp; Início</a></li>
+				<li><a href="javascript:void(0)" onclick="showMapPage()"><i class="material-icons" >map</i> &nbsp; Mapa</a></li>
+				<li><a href="javascript:void(0)" onclick="showFormPage()"><i class="material-icons" >assignment</i> &nbsp; Cadastro</a></li>
+			</ul>
+		</section>
+
+		<section id="loginPage">
+			<center>
+				<br/><br/><br/>
+				<img src="logoapp.png" width="200" alt="Logo do App" />
+				<br/><br/><br/>
+				
+				<div id="fb-root"></div>
+				<div class="fb-login-button" data-size="large" data-button-type="login_with" 
+					data-auto-logout-link="true" data-use-continue-as="false" 
+					scope="public_profile,email" onlogin="checkLoginState();"></div>
+					
+				<br/><br/>
+				<div id="google-signin2"></div>
+			</center>
+		</section>
+
+		<section id="mapPage" style="display:none;">
+			<center>
+				<h1>Mapa</h1></center>
+				<div id="map"></div>
+		</section>
+
+		<section id="formPage" style="display:none;">
+			<center>
+				<h1>Cadastro</h1></center>
+			<div id="userfield" style="margin:30px;">
+				Usuário:<b> Não Logado</b>
+			</div>	
+			<div style="margin:30px;">
+				<label for="feedbackmessageTextArea"><b>Envie-nos seu feedback, dúvidas ou sugestões:</b></label>
+				<textarea id="feedbackmessageTextArea"></textarea>
+			</div>
+			<div style="margin:30px;">
+				<label for="contactField"><b>Informação de contato:</b></label>
+				<input id="contactField" type="text">
+			</div>
+			<div>
+				<center><button type="button" name="action" onclick="saveForm();">Salvar</button></center>
+			</div>
+			<br/>
+			<div id="listFormDiv" style="margin:20px;"></div>
+		</section>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+nav {
+    color: #fff;
+    background-color: transparent; 
+    /* width: 100%; */
+     height: 0px; 
+     line-height: 0px; 
+     display: block !important;
+}
+
+
+@media only screen and (min-width: 993px) {
+	nav a.sidenav-trigger {
+    	display: block !important;
+	}
+}
+
+
+.NavbarToggle {
+  width: 32px;
+  height: 30px;
+  z-index: 999;
+}
+
+.ToggleOne,
+.ToggleTwo,
+.ToggleThree {
+  height: 3px;
+  border-radius: 5px;
+  margin: 6px auto;
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  background-color: white;
+
+}
