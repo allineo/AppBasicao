@@ -37,6 +37,7 @@ function listForm() {
 		   			date + "<br/>" +
 		   			item.contact + "<br/>" + 
 		   			item.message;
+		   	addMarker(parseInt(item.latitude), parseInt(item.longitude), item.message);
 		}
 		document.getElementById("listFormDiv").innerHTML = list + "<hr>";
 	});

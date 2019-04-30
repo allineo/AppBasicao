@@ -1,7 +1,7 @@
 
 var latitude = "";
 var longitude = "";
-var map;
+var map = null;
 
 getLocation();
 
@@ -21,11 +21,13 @@ function getLocationSuccess(position) {
 }
 
 function initMap() {
-	 map = new google.maps.Map(document.getElementById('map'), {
-	    zoom: 12,
-	    center: {lat: latitude, lng: longitude}
-	 });
-	 addMarker(latitude, longitude, username);
+	if (map == null) {
+		 map = new google.maps.Map(document.getElementById('map'), {
+		    zoom: 12,
+		    center: {lat: latitude, lng: longitude}
+		 });
+		 addMarker(latitude, longitude, username);
+	}
 }
 
 function addMarker(lat, long, title) {
