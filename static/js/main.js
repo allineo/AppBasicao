@@ -34,8 +34,8 @@ function saveNewUser(login, userid, username, useremail) {
 	var url = "/saveNewUser?"
 				+ "login=" + login
 				+ "&userid=" + userid
-        + "&latitude=" + latitude
-        + "&longitude=" + longitude				
+		        + "&latitude=" + latitude
+		        + "&longitude=" + longitude				
 				+ "&username=" + username 
 				+ "&useremail=" + useremail;
 	
