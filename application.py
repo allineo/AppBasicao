@@ -5,15 +5,15 @@ from urllib.parse import unquote
 import datetime
 
 
+application = Flask(__name__)
 
-app = Flask(__name__)
 
-@app.route('/')
+@application.route('/')
 def main():
 	return redirect('static/index.html')
 
 
-@app.route('/saveNewUser', methods=['POST'])
+@application.route('/saveNewUser', methods=['POST'])
 def saveNewUser():
 	item = {"login": request.args.get("login"),
 			"userid": request.args.get("userid"),
@@ -25,14 +25,14 @@ def saveNewUser():
 	return saveUser(item)
 
 
-@app.route('/listForm', methods=['POST'])
+@application.route('/listForm', methods=['POST'])
 def listForm():	
 	#if authenticate() != 'error':
 	authenticate()
 	return listCadastro()
 	
 
-@app.route('/saveForm', methods=['POST'])
+@application.route('/saveForm', methods=['POST'])
 def saveForm():
 	#if authenticate() != 'error':
 	authenticate()
@@ -57,4 +57,4 @@ def authenticate():
 
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	application.run(debug=True)
