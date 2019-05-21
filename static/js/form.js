@@ -16,6 +16,7 @@ function saveForm() {
 		.then(function(response) {
 			var itemid = response;
 			listForm();
+			showFormPage();
 		});
 }
 
