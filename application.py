@@ -1,8 +1,6 @@
-from flask import Flask, Response, request, redirect
+from flask import Flask, request, redirect
 from py.formCadastro import *
 from py.authentication import *
-from urllib.parse import unquote
-import datetime
 
 
 application = Flask(__name__)
@@ -15,34 +13,19 @@ def main():
 
 @application.route('/saveNewUser', methods=['POST'])
 def saveNewUser():
-	item = {"login": request.args.get("login"),
-			"userid": request.args.get("userid"),
-			"latitude": request.args.get("latitude"),
-			"longitude": request.args.get("longitude"),
-			"name": request.args.get("username"),
-			"email": request.args.get("useremail"),
-			"timestamp": datetime.datetime.utcnow()}
-	return saveUser(item)
+	return saveUser(request)
 
 
 @application.route('/listForm', methods=['POST'])
 def listForm():	
-	#if authenticate() != 'error':
 	authenticate()
 	return listCadastro()
 	
 
 @application.route('/saveForm', methods=['POST'])
 def saveForm():
-	#if authenticate() != 'error':
-	authenticate()
-	item = {"contact": unquote(request.args.get("contact")), 
-			"message": unquote(request.args.get("message")),
-			"userid": request.args.get("userid"),
-			"latitude": request.args.get("latitude"),
-			"longitude": request.args.get("longitude"),
-			"timestamp": datetime.datetime.utcnow()}		
-	return saveCadastro(item)
+	authenticate()		
+	return saveCadastro(request)
 	
 
 

@@ -11,11 +11,12 @@ function saveForm() {
 				+ "&latitude=" + latitude
         		+ "&longitude=" + longitude	
 				+ "&token=" + token;
-	
-	$.post(url, {}, function(response) {
-		var itemid = response;
-		listForm();
-	});
+
+	fetch(url, {method: 'POST'})
+		.then(function(response) {
+			var itemid = response;
+			listForm();
+		});
 }
 
 function listForm() {
@@ -23,22 +24,22 @@ function listForm() {
 				+ "login=" + login 
 				+ "&userid=" + userid 
 				+ "&token=" + token;
-	
-	$.post(url, {}, function(response) {
-		var list = "";
-		var items = jQuery.parseJSON(response);
-		for(var k in items) {
-			var item = items[k];
-			var date = "";
-			if (item.timestamp != undefined && (item.timestamp != "")) {
-				var date = new Date(item.timestamp.$date);
+	fetch(url, {method: 'POST'}) 
+		.then((resp) => resp.json())
+		.then(function(respjson) {
+			var list = "";
+			for(var k in respjson) {
+				var item = respjson[k];
+				var date = "";
+				if (item.timestamp != undefined && (item.timestamp != "")) {
+					var date = new Date(item.timestamp.$date);
+				}
+				   list += "<hr>" + 
+						   date + "<br/>" +
+						   item.contact + "<br/>" + 
+						   item.message;
+				   addMarker(parseInt(item.latitude), parseInt(item.longitude), item.message);
 			}
-		   	list += "<hr>" + 
-		   			date + "<br/>" +
-		   			item.contact + "<br/>" + 
-		   			item.message;
-		   	addMarker(parseInt(item.latitude), parseInt(item.longitude), item.message);
-		}
-		document.getElementById("listFormDiv").innerHTML = list + "<hr>";
-	});
+			document.getElementById("listFormDiv").innerHTML = list + "<hr>";
+		});
 }

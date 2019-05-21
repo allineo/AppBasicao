@@ -15,3 +15,9 @@ def dbConnection(dbcollectionname):
 	db = client[dbname]	
 	dbcollection = db[dbcollectionname]
 	return dbcollection
+
+
+def saveData(dbcollectionname, data):
+	dbcollection = dbConnection(dbcollectionname)
+	id = dbcollection.insert_one(data).inserted_id
+	return str(id)

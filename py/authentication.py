@@ -1,6 +1,7 @@
 import requests
 import pymongo
 from py.dbconnect import *
+import datetime
 
 
 def verifyFbToken(fbtoken, fbuserid):
@@ -28,11 +29,18 @@ def verifyGlToken(gltoken, gluserid):
 		return 'error'
 
 
-def saveUser(item):
+def saveUser(request):
+	data = {"login": request.args.get("login"),
+			"userid": request.args.get("userid"),
+			"latitude": request.args.get("latitude"),
+			"longitude": request.args.get("longitude"),
+			"name": request.args.get("username"),
+			"email": request.args.get("useremail"),
+			"timestamp": datetime.datetime.utcnow()}
 	dbcollection = dbConnection("users")
-	user = dbcollection.find_one({"userid": item["userid"]})
+	user = dbcollection.find_one({"userid": data["userid"]})
 	if user == '' or user == None:
-		dbuserid = dbcollection.insert_one(item).inserted_id
+		dbuserid = dbcollection.insert_one(data).inserted_id
 	else:
 		dbuserid = user["_id"]
 	return str(dbuserid)
