@@ -1,6 +1,5 @@
 import pymongo, json
 
-#class dbConnect:
 
 def getConfig(configitem):
 	with open('py/config.json', 'r') as f:

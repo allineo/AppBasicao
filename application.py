@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect
+from flask import Flask, render_template, request
 from py.formCadastro import *
 from py.authentication import *
 
@@ -8,7 +8,7 @@ application = Flask(__name__)
 
 @application.route('/')
 def main():
-	return redirect('static/index.html')
+	return render_template('index.html')
 
 
 @application.route('/saveNewUser', methods=['POST'])
