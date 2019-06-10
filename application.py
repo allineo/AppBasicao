@@ -17,16 +17,16 @@ def saveNewUser():
 
 
 @application.route('/listForm', methods=['POST'])
-def listForm():	
+def listForm():
 	authenticate()
 	return listCadastro()
-	
+
 
 @application.route('/saveForm', methods=['POST'])
 def saveForm():
-	authenticate()		
+	authenticate()
 	return saveCadastro(request)
-	
+
 
 
 def authenticate():
