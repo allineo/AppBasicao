@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
+from flask_cors import CORS
 from py.formCadastro import *
 from py.authentication import *
 
 
 application = Flask(__name__)
+CORS(application)
 
 
 @application.route('/')
