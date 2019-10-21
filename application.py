@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from py.formCadastro import *
 from py.authentication import *
@@ -15,7 +15,8 @@ def main():
 
 @application.route('/saveNewUser', methods=['POST'])
 def saveNewUser():
-    return saveUser(request)
+    data = request.get_json()
+    return saveUser(data)
 
 
 @application.route('/listForm', methods=['POST'])
@@ -27,7 +28,8 @@ def listForm():
 @application.route('/saveForm', methods=['POST'])
 def saveForm():
     authenticate()
-    return saveCadastro(request)
+    data = request.get_json()
+    return jsonify(saveCadastro(data))
 
 
 

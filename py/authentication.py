@@ -33,14 +33,8 @@ def verifyGlToken(gltoken, gluserid):
         return 'error'
 
 
-def saveUser(request):
-    data = {"login": request.args.get("login"),
-            "userid": request.args.get("userid"),
-            "latitude": request.args.get("latitude"),
-            "longitude": request.args.get("longitude"),
-            "name": request.args.get("username"),
-            "email": request.args.get("useremail"),
-            "timestamp": datetime.datetime.utcnow()}
+def saveUser(data):
+    data["timestamp"] = datetime.datetime.utcnow()
     dbcollection = dbConnection("users")
     user = dbcollection.find_one({"userid": data["userid"]})
     if user in ('', None):

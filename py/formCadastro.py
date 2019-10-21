@@ -13,11 +13,6 @@ def listCadastro():
     return dumps(cursor)
 
 
-def saveCadastro(request):
-    data = {"contact": unquote(request.args.get("contact")),
-            "message": unquote(request.args.get("message")),
-            "userid": request.args.get("userid"),
-            "latitude": request.args.get("latitude"),
-            "longitude": request.args.get("longitude"),
-            "timestamp": datetime.datetime.utcnow()}
+def saveCadastro(data):
+    data["timestamp"] = datetime.datetime.utcnow()
     return saveData(dbcollectionname, data)
