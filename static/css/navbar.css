@@ -31,6 +31,6 @@ nav {
   backface-visibility: hidden;
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
-  background-color: white;
+  background-color: darkgray;
 
 }
